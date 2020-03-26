@@ -1,1 +1,11 @@
-# kata_bank-account_clojure
+# Kata - Bank Account - Clojure
+
+Made with [leiningen](https://leiningen.org/).
+
+### Run
+
+`lein run`
+
+### Test
+
+`lein test`
