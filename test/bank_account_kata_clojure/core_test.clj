@@ -80,6 +80,42 @@
   ; print
 
   (testing "should print header when there is no operation"
-    (is (= "Date | Operation | Balance"
+    (is (= "Date | Operation | Balance\n"
            (print-statements (create-account)))))
+
+  (testing "should print statements after one deposit"
+    (is (= (long-str "Date | Operation | Balance"
+                     "01/04/2020 | 75 | 75")
+           (print-statements (deposit (create-account) 75 "01/04/2020")))))
+
+  (testing "should print statements after one deposit and one withdraw"
+    (is (= (long-str "Date | Operation | Balance"
+                     "02/04/2020 | -5 | 5"
+                     "01/04/2020 | 10 | 10")
+            (-> (create-account)
+                (deposit 10 "01/04/2020")
+                (withdraw 5 "02/04/2020")
+                (print-statements)))))
+
+)
+
+(deftest add-balance-to-operation-test
+
+  (testing "should set add balance for first operation"
+    (is (= {:amount 10 :balance 10 :date "01/04/2020"}
+           (add-balance-to-operation {:amount 10 :date "01/04/2020"} []))))
+
+  (testing "should add balance for second operation"
+    (is (= {:amount 15 :balance 25 :date "02/04/2020"}
+           (add-balance-to-operation {:amount 15 :date "02/04/2020"} [{:amount 10 :date "01/04/2020"}]))))
+)
+
+(deftest add-balance-to-operations-test
+
+  (testing "should compute and add balance to every operations"
+    (is (= [{:amount 10 :balance 10 :date "01/04/2020"}, {:amount -5 :balance 5 :date "02/04/2020"}]
+            (-> (create-account)
+                (deposit 10 "01/04/2020")
+                (withdraw 5 "02/04/2020")
+                (add-balance-to-operations)))))
 )
