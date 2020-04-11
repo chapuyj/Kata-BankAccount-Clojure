@@ -50,7 +50,30 @@
     (is (= 75 
            (balance (deposit (create-account) 75 "01/02/2020")))))
 
+  (testing "should compute balance after two deposits"
+    (is (= 250 
+           (-> (create-account)
+               (deposit 100 "01/04/2020")
+               (deposit 150 "02/04/2020")
+               (balance)))))
+
   (testing "should compute balance after a withdraw"
     (is (= -80
            (balance (withdraw (create-account) 80 "05/02/2020")))))
+
+  (testing "should compute balance after two withdraw"
+    (is (= -100 
+           (-> (create-account)
+               (withdraw 70 "01/04/2020")
+               (withdraw 30 "02/04/2020")
+               (balance)))))
+
+  (testing "should compute balance after two deposits and two withdraws"
+    (is (= 20
+           (-> (create-account)
+               (deposit 20 "01/04/2020")
+               (deposit 30 "01/04/2020")
+               (withdraw 10 "01/04/2020")
+               (withdraw 20 "02/04/2020")
+               (balance)))))
 )
