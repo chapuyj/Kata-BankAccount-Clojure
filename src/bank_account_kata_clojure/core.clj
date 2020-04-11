@@ -20,6 +20,8 @@
 (defn balance [account]
   (reduce #(+ %1 (:amount %2)) 0 account))
 
+(defn print-statements [account] "Date | Operation | Balance")
+
 ; main
 
 (defn -main

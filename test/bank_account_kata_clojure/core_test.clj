@@ -76,4 +76,10 @@
                (withdraw 10 "01/04/2020")
                (withdraw 20 "02/04/2020")
                (balance)))))
+
+  ; print
+
+  (testing "should print header when there is no operation"
+    (is (= "Date | Operation | Balance"
+           (print-statements (create-account)))))
 )
