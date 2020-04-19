@@ -50,6 +50,17 @@ So I created one more function `compute-balance` declarated before both other fu
 I did the whole kata in TDD, by writting acceptance tests for account first. 
 I was lost when I tried to write `print-statements` function. Learning a language, mixing multiple function calls, trying to reduce, map, compute balance, etc. So I started more specific unit tests to help me and to decompose in multiple functions.
 
+### Stored-Balance notes
+
+#### peek
+For a list or queue, same as `first`, for a vector, same as, but **muchmore efficient** than, `last`. 
+If the collection is empty, returns nil.
+[See documentation](https://clojuredocs.org/clojure.core/peek)
+
+#### if-let
+Bind value if true.
+[See documentation](https://clojuredocs.org/clojure.core/if-let)
+
 ## Quick links
 
 - [Clojure Getting started](https://clojure.org/guides/getting_started)
